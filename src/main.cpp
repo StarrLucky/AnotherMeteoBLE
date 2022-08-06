@@ -11,8 +11,7 @@
 #define SERVICE_UUID        "8aa816be-b599-4696-a2d6-c4f07b887f28"
 #define CHARACTERISTIC_UUID "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
-RTC_DATA_ATTR int bootCount = 0;
-iarduino_DHT sensor(23);  // DTT11
+iarduino_DHT sensor(23);  // DTT11 PIN
 BLECharacteristic *pCharacteristic;
 bool deviceConnected = false;
 
@@ -79,7 +78,6 @@ void setup() {
 
 }
 
-
 static char tempStr[16];
 static char humStr[16];
 
@@ -97,7 +95,6 @@ void loop() {
 
   }
 
-  
   if (deviceConnected) 
   {
     // ToStringing routine
@@ -107,7 +104,6 @@ void loop() {
     // Setting value to the characteristic
     pCharacteristic->setValue(tempStr);
     pCharacteristic->notify();
-    //pCharacteristic->indicate();
 
   }
 
